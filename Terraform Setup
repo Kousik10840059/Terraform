@@ -1,0 +1,130 @@
+Day 20
+
+Try to learn Groovy, GoLang, JSON and python
+
+Cloud formation is a amazon IAC (infrastructure as code)
+
+Cloud Formation helps in creating of cluster when ekscluster is made
+
+Cloud formation is written in JSON
+
+Azure's IAC tool is called ARM template
+
+GCP's IAC tool is google deployment
+
+Private cloud provisioning is done via OpenStack
+
+Heat template is used as IAC for OpenStack
+
+So to overcome the issue of learning multiple IAC -> we use
+
+Terraform: It is developed by Mitchell Hashimoto
+
+Alternatives of terraform are: OpenTofu
+
+Terraform is working under IBM (IBM has purchased it)
+
+Types of IAC:
+
+Configuration management tool: Ansible, Chef, Puppet, SaltStack
+Server templating tool: Docker, Aws AMI builder
+Infrastructure provisioning: AWS cloud form, ARM template, Terraform, OpenTofu
+Terraform lint is a package that is used to understand,
+
+if there is any typo error in the code
+
+terraform --fmt (to format the indentation properly)
+
+In terraform we use .tf extension, we use HCL to write code
+
+HCL = hashicorp configuration management
+
+Terraform will help in managing database, resources
+
+Types of connection
+
+provider.tf
+
+awscli (aws configure)
+
+HOW TO SETUP TERRAFORM
+
+Host an instance in aws and connect it with the terminal
+
+First create a user in AWS create access key
+
+go to terraform installation
+
+https://developer.hashicorp.com/terraform/install
+
+and install it
+
+mkdir /terra-code
+
+cd /terra-code/
+
+ls
+
+aws configure or via provider.tf
+
+vim provider.tf
+
+paste the code inside from : https://registry.terraform.io/providers/hashicorp/aws/latest/docs
+
+provider "aws" {
+
+  region = "us-west-2"
+
+  access_key = "my-access-key"
+
+  secret_key = "my-secret-key"
+
+}
+
+again to provider.tf : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance
+
+for ami paste the ami image from ami catalog
+
+resource "aws_instance" "zain-server" {
+
+  ami = "image id"
+
+  instance_type = "t3.micro"
+
+  tags = {
+
+  Name = "India-server"
+
+  }
+
+}
+
+terraform init
+
+ls -a
+
+yum install tree -y
+
+tree -a
+
+the green file terraform-provider-aws goes and works in ws
+
+terraform validate
+
+terraform plan
+
+terraform apply
+
+if you make change in tags
+
+then run
+
+terraform plan -> it will tell the changes (it monitors the changes)
+
+ls -a ->
+
+there is a file terraform.tf-state that monitors and keeps all the
+
+sensitive information about the configuration
+
+terraform destroy -> to remove all the files and terminate the instance
